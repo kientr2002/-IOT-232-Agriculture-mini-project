@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.angads25.toggle.interfaces.OnToggledListener;
@@ -20,8 +21,9 @@ import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
     MQTTHelper mqttHelper;
-    TextView txtTemp, txtHumi;
-    LabeledSwitch btnLED, btnPUMP;
+    TextView txtTemp, txtHumi, txtLight, txtTime, txtTimeSubscribe;
+    LabeledSwitch btnLED;
+    Button btnSubmit;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         txtTemp = findViewById(R.id.txtTemprature);
         txtHumi = findViewById(R.id.txtHumidity);
+        txtLight = findViewById(R.id.txtLight);
+        txtTime = findViewById(R.id.txtTime);
+        txtTimeSubscribe = findViewById(R.id.txtTimeSubscribe);
 
         btnLED = findViewById(R.id.btnLED);
-        btnPUMP = findViewById(R.id.btnPUMP);
-
+        btnSubmit = findViewById(R.id.btnSubmit);
         btnLED.setOnToggledListener(new OnToggledListener() {
             @Override
             public void onSwitched(ToggleableView toggleableView, boolean isOn) {
@@ -45,17 +49,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnPUMP.setOnToggledListener(new OnToggledListener() {
-            @Override
-            public void onSwitched(ToggleableView toggleableView, boolean isOn) {
-                if(isOn == true){
-                    sendDataMQTT("kientranvictory/feeds/button2", "1");
-                } else {
-                    sendDataMQTT("kientranvictory/feeds/button2", "0");
-                }
-
-            }
-        });
 
         startMQTT();
 
@@ -94,17 +87,15 @@ public class MainActivity extends AppCompatActivity {
                     txtTemp.setText(message.toString() + "°C");
                 } else if(topic.contains("sensor2")){
                     txtHumi.setText(message.toString()+"%");
+                } else if(topic.contains("sensor3")){
+                    txtLight.setText(message.toString()+"lx");
+                } else if(topic.contains("time")){
+                    txtTime.setText(message.toString());
                 } else if(topic.contains(("button1"))){
                     if(message.toString().equals("1")){
                         btnLED.setOn(true);
                     } else if (message.toString().equals("0")){
                         btnLED.setOn(false);
-                    }
-                } else if(topic.contains(("button2"))){
-                    if(message.toString().equals("1")){
-                        btnPUMP.setOn(true);
-                    } else if (message.toString().equals("0")){
-                        btnPUMP.setOn(false);
                     }
                 }
             }

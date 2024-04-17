@@ -19,7 +19,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MQTTHelper {
     public MqttAndroidClient mqttAndroidClient;
 
-    public final String[] arrayTopics = {"kientranvictory/feeds/sensor1", "kientranvictory/feeds/sensor2", "kientranvictory/feeds/button1", "kientranvictory/feeds/button2"};
+    public final String[] arrayTopics = {"kientranvictory/feeds/sensor1", "kientranvictory/feeds/sensor2", "kientranvictory/feeds/sensor3", "kientranvictory/feeds/button1", "kientranvictory/feeds/time"};
 
     final String clientId = "543525467";
     final String username = "kientranvictory";

@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="9"
-            android:text = "Tran Van Kien - 2013552"
+            android:text = "Tran Van Kien - MiniProject"
             android:gravity = "center"
             android:textColor = "#ff0000"
             android:textSize = "30dp"/>
@@ -42,7 +42,7 @@
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="5dp"
             />
         <TextView
             android:id="@+id/txtHumidity"
@@ -55,8 +55,57 @@
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="5dp"
             />
+        <TextView
+            android:id="@+id/txtLight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00ff00"
+            android:text="10 lx"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="#008000"
+        android:text="00:00"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_margin="5dp">
+        <EditText
+            android:id="@+id/txtTimeSubscribe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:inputType="text"
+            android:hint = "Example: 08:30"
+            android:textColorHighlight="#7cff88"/>
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="OK" />
     </LinearLayout>
 
     <com.github.angads25.toggle.widget.LabeledSwitch
@@ -74,27 +123,4 @@
         app:textOff="TẮT"
         app:on="false"
         app:colorBorder="#FF4081"/>
-
-    <com.github.angads25.toggle.widget.LabeledSwitch
-        android:id="@+id/btnPUMP"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="20"
-        android:layout_margin="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textSize="30dp"
-        app:textOn="BẬT"
-        app:textOff="TẮT"
-        app:on="false"
-        app:colorBorder="#ffff00"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10">
-
-    </LinearLayout>
 </LinearLayout>
