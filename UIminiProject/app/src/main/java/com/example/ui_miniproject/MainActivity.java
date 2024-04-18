@@ -3,10 +3,14 @@ package com.example.ui_miniproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import com.github.angads25.toggle.interfaces.OnToggledListener;
 import com.github.angads25.toggle.model.ToggleableView;
@@ -48,8 +52,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String enteredText = txtTimeSubscribe.getText().toString();
+                if (enteredText.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$")) {
+                    sendDataMQTT("kientranvictory/feeds/time",enteredText);
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setMessage("You entered incorrect value!")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //NOTHING
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            }
+        });
         startMQTT();
 
     }
