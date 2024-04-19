@@ -11,3 +11,15 @@ void led_turning(bool state, int redpin, int bluepin, int greenpin){
     analogWrite(greenpin, 0); 
   }
 }
+
+bool change_led_state(bool button_state, int light_value){
+  if(button_state == true){
+    return true;
+  } else {
+    if(light_value < 10){
+      return false; //sua lai thanh true
+    }
+  }
+  return false;
+  
+}
