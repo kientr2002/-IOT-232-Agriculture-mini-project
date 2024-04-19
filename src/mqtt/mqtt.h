@@ -5,6 +5,7 @@
 #include <WiFi.h>
 
 
+
 class MyMQTT {
 private:
     String mqtt_server;
@@ -12,6 +13,7 @@ private:
     String password;
     WiFiClient espClient;
     PubSubClient client;
+    String dataSubscribe;
 
 public:
     MyMQTT(String server, String user, String password) 
@@ -22,8 +24,10 @@ public:
     void connectToMQTT();
     void subscribe(String);
     bool publish(String, String);
+    bool checkSubscribe();
     void checkConnect();
-
+    
+    String getDataSubscribe();
 private:
     void callback(char*, byte*, unsigned int);
     void reConnect();
