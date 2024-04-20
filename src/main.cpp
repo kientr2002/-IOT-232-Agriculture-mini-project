@@ -104,10 +104,10 @@ void loop() {
   
   button_state = change_state_button(button_state, button_turning(BUTTONPIN, button_counter));
   
-  led_state = change_led_state(button_state, data_sensor[2]);
+  led_state = change_led_state(button_state, data_sensor[2], led_trigger_flag);
 
   /* Publish to MQTT */
-  // publish_data_sensor_to_mqtt(mymqtt_feed, sizeof(data_sensor)/sizeof(int), data_sensor);
+  publish_data_sensor_to_mqtt(mymqtt_feed, sizeof(data_sensor)/sizeof(int), data_sensor);
   publish_data_button_to_mqtt(button_state, button_previous_state);
 
   /* Subscribe to MQTT */

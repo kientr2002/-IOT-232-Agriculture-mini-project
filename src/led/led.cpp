@@ -12,12 +12,17 @@ void led_turning(bool state, int redpin, int bluepin, int greenpin){
   }
 }
 
-bool change_led_state(bool button_state, int light_value){
-  if(button_state == true){
+bool change_led_state(bool& button_state, int light_value, bool& led_trigger_flag){
+ if(button_state == true && led_trigger_flag == false){
     return true;
   } else {
     if(light_value < 10){
-      return false; //sua lai thanh true
+      button_state = true;
+      led_trigger_flag = true;
+      return true; //sua lai thanh true
+    } else {
+       button_state = false;
+      led_trigger_flag = false;
     }
   }
   return false;

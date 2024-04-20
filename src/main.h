@@ -56,6 +56,7 @@ extern int hour = 0;
 extern int minute = 0;
 
 extern bool time_trigger_flag = false;
+extern bool led_trigger_flag = false;
 
 struct SubscribedData {
     String topic;
